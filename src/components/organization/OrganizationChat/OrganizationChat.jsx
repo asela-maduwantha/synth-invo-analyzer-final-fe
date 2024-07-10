@@ -218,7 +218,7 @@ const UserChat = () => {
 
     const fetchAdmins = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/chat/admin-list/');
+            const response = await axios.get('https://synthinvoice.azurewebsites.net/chat/admin-list/');
             const sortedAdmins = response.data.sort((a, b) => new Date(b.last_message_time) - new Date(a.last_message_time));
             setAdmins(sortedAdmins);
         } catch (error) {
@@ -229,10 +229,10 @@ const UserChat = () => {
 
     const fetchChatHistory = async (adminId) => {
         try {
-            const response = await axios.get(`http://localhost:8000/chat/history/${adminId}/${organizationId}/organization/`);
+            const response = await axios.get(`https://synthinvoice.azurewebsites.net/${adminId}/${organizationId}/organization/`);
             setMessages(response.data);
             scrollToBottom();
-            const newWs = new WebSocket(`ws://localhost:8000/ws/chat/admin/${adminId}/organization/${organizationId}/`);
+            const newWs = new WebSocket(`ws://synthinvoice.azurewebsites.net//ws/chat/admin/${adminId}/organization/${organizationId}/`);
             setWs(newWs);
         } catch (error) {
             console.error('Error fetching chat history:', error);

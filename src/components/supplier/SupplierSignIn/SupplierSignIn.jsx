@@ -100,7 +100,7 @@ const SupplierSignIn = () => {
     const { email, password } = values;
 
     try {
-      const response = await axios.post('http://localhost:8000/auth/supplier/signin/', {
+      const response = await axios.post('http://synthinvoice.azurewebsites.net//auth/supplier/signin/', {
         email,
         password,
       });

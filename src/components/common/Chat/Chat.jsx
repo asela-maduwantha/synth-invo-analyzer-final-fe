@@ -24,7 +24,7 @@ const Chat = () => {
 
     useEffect(() => {
         if (selectedUser) {
-            const newWs = new WebSocket(`ws://localhost:8000/ws/chat/admin/${adminId}/${selectedUser.type}/${selectedUser.id}/`);
+            const newWs = new WebSocket(`ws://synthinvoice.azurewebsites.net//ws/chat/admin/${adminId}/${selectedUser.type}/${selectedUser.id}/`);
             setWs(newWs);
             newWs.onmessage = (event) => {
                 const data = JSON.parse(event.data);
